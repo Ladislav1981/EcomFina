@@ -18,7 +18,7 @@ public abstract class BasePage {
     protected void clickElement(Locator element) {  // пишем функцию которая будем делать нажатие на элемент//
         element.click();
         System.out.println("Clicking on" + element + "......");
-
+        page.waitForTimeout(3000);
     }
 
     protected void typeText(Locator element, String textToType) {
@@ -50,7 +50,7 @@ public abstract class BasePage {
 
     public void selectDropdown(Locator element, String value) {  // вызов опций поиска товаров//
         element.selectOption(value);
-        page.waitForTimeout(2000);
+        page.waitForTimeout(3000);
     }
 
 }

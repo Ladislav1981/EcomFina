@@ -3,6 +3,7 @@ package test.SauseDemo;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.ProductPage;
+import pages.YourCartPage;
 
 public class End2EndTests extends BaseTest {
 
@@ -25,6 +26,26 @@ public class End2EndTests extends BaseTest {
         productPage.validateAddedItems("1");
         productPage.chooseItem("Sauce Labs Bike Light");
         productPage.validateAddedItems("2");
+
+        YourCartPage yourCartPage = new YourCartPage(page);
+
+        yourCartPage.clickOnCart("shoppingCartElement");
+
+        yourCartPage.assertThatPageUrl("https://www.saucedemo.com/cart.html");
+
+        yourCartPage.validateCartTitle("Your Cart");
+
+        yourCartPage.clickOncheckout("checkoutElement");
+
+        yourCartPage.fillForm("Ladislav", "Kantarovich", "8450005");
+
+        yourCartPage.clickOncontinue("continueElement");
+
+        yourCartPage.clickOnfinish("finishElement");
+
+        yourCartPage.clickLogout("clickburgerDropMenu");
+
+        yourCartPage.clickLogoutbutton("clicklogoutlink");
 
     }
 
